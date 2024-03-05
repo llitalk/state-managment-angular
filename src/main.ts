@@ -1,19 +1,21 @@
 import { Component } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import 'zone.js';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { HeaderComponent } from './app/header/header.component';
 
 @Component({
   selector: 'app-root',
+  imports: [HeaderComponent],
   standalone: true,
   template: `
-    <h1>Hello from {{ name }}!</h1>
-    <a target="_blank" href="https://angular.dev/overview">
-      Learn more about Angular
-    </a>
+ <app-header></app-header>
   `,
 })
 export class App {
-  name = 'Angular';
+  
 }
 
-bootstrapApplication(App);
+bootstrapApplication(App, {
+  providers: [provideAnimationsAsync()]
+});
